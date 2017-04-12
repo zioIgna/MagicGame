@@ -16,4 +16,7 @@ public interface Card {
     String type(); //sorcery, instant, or creature
     String ruleText();
     boolean isInstant();
+    
+    //funzione che punta alla testa della lista dei decorator della carta
+    //void toDecorator();
 }
