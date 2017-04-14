@@ -7,11 +7,11 @@ package cardgame;
 
 public interface TargetedEffect {
 
-public interface Effect {
-    // pays for effect and places it in the stack
-    boolean play();
-    
-    // caso in cui la spell funzioni su una creatura
-    void resolve(Card c);
-}
+    public interface Effect {
+        // pays for effect and places it in the stack
+        boolean play();
+
+        // caso in cui la spell funzioni su una creatura
+        void resolve(Card c);
+    }
 }
