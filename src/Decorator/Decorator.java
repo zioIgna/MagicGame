@@ -11,7 +11,7 @@ import cardgame.Creature;
  *
  * @author Manuel
  */
-public abstract class Decorator implements Creature {
+public abstract class Decorator implements Creature {   //perché non richiede di implementare tutti i metodi di Creature?
     
     protected final Creature decoratedCreature;
 
