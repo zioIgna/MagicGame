@@ -10,6 +10,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.EnumMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -160,6 +161,7 @@ public class Player {
     
     // Creature management
     private final ArrayList<Creature> creatures = new ArrayList<>();
+    //tutte le creature in campo
     public List<Creature> getCreatures() {return creatures;}
     // destroy a creature in play
     public void destroy(Creature c) {creatures.remove(c);} 
@@ -171,4 +173,35 @@ public class Player {
     public List<Enchantment> getEnchantments() {return enchantments;}
     // destroy a creature in play
     public void destroy(Enchantment c) {enchantments.remove(c);} 
+
+
+    //combat management
+    //lista delle creature non tappate
+    public List<Creature> getUntappedCreatures(){
+        List<Creature> untapped = new LinkedList();
+        
+         for (Creature c:creatures)
+             if(!c.isTapped()){
+                 untapped.add(c);
+         }
+       
+        return untapped;
+
+    }
+    
+    //stampa creature non tappate
+    public void printUntapped (List<Creature> e ){
+        
+        if (e.isEmpty()) {
+                System.out.println("You have no untapped creatures in play");
+            } else {
+                System.out.println("These are your untapped creatures in play:");
+                for (Creature c:e)
+                    System.out.println("  "+c);
+            }
+    }
+    
+    
+    
+    
 }

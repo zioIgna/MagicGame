@@ -19,12 +19,12 @@ public class BronzeSableCreature extends AbstractCreature {
 
     @Override
     public int getPower() {
-        return 0;
+        return 1;
     }
 
     @Override
     public int getToughness() {
-        return 1;
+        return 2;
     }
 
     @Override

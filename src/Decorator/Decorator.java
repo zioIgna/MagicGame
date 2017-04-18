@@ -1,38 +1,35 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Decorator;
 
-import cardgame.Card;
-import java.util.LinkedList;
+import cardgame.Creature;
+
+/**
+ *
+ * @author Manuel
+ */
+public abstract class Decorator implements Creature {
+    
+    protected final Creature decoratedCreature;
 
 
-public class Decorator {
-    public Card c;
-    public LinkedList<decoratorToken> deck = new LinkedList<>();
-    
-    //aggiungere un token alla lista
-    public void addToken(){
-        
+    public Decorator(Creature c) {
+        this.decoratedCreature = c;
     }
-    
-    //applicare i token alla carta 
-    public void resolve(Card c){
-        
+
+    @Override
+    public int getPower() { // Implementing methods of the interface
+        return decoratedCreature.getPower();
     }
-    
-    //ritoernare la carta modificata
-    public Card returnCard(){
-        return this.c;
+
+    @Override
+    public int getToughness() {
+        return decoratedCreature.getToughness();
     }
-    
-    //controllo che la carta non sia stata distrutta
-    public boolean isDead(){
-        return false;
-    }
-    
-    //rimuove gli effetti che finisco alla fine del turno
-    public void banishFleeting(){
-        
-    }
-    
-    
 }
+
+    
+

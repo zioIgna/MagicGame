@@ -1,6 +1,7 @@
 package cardgame.cards;
 
-import cardgame.AbstractCardEffect;
+import Decorator.*;
+import cardgame.AbstractTargetedCardEffect;
 import cardgame.Card;
 import cardgame.Effect;
 import cardgame.Player;
@@ -12,12 +13,20 @@ public class Affliction implements Card {
     trovare il modo di acquisire un target 
     */
     
-    private class AfflictEffect extends AbstractCardEffect {
+    
+    //da rifare
+    private class AfflictEffect extends AbstractTargetedCardEffect {
         public AfflictEffect(Player p, Card c) { super(p,c); }
         
-        
+  
         @Override
-        public void resolve() {}
+        public void resolve(Card c) {
+            c = new AfflictionDecorator(c);
+        }
+
+        @Override
+        public void resolve() {
+        }
     }
 
     @Override
