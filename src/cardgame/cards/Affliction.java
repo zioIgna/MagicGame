@@ -1,9 +1,10 @@
 package cardgame.cards;
 
 import Decorator.*;
-import cardgame.AbstractTargetedCardEffect;
+import cardgame.AbstractInstantCardEffect;
 import cardgame.Card;
 import cardgame.Effect;
+import cardgame.Instant;
 import cardgame.Player;
 
 
@@ -15,17 +16,21 @@ public class Affliction implements Card {
     
     
     //da rifare
-    private class AfflictEffect extends AbstractTargetedCardEffect {
+    private class AfflictEffect extends AbstractInstantCardEffect {    //forse deve estendere una AbstractInstantCardEffect
         public AfflictEffect(Player p, Card c) { super(p,c); }
         
   
-        @Override
         public void resolve(Card c) {
             c = new AfflictionDecorator(c);
         }
 
         @Override
         public void resolve() {
+        }
+
+        @Override
+        protected Instant createInstant() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
     }
 
