@@ -55,6 +55,8 @@ public class DefaultCombatPhase implements Phase {
         attackers.add(untapped.remove(idx));
         }
         while(idx >= 0 || !untapped.isEmpty());
+        for(Creature c: untapped)
+            c.tap();
         return attackers;
     
 }

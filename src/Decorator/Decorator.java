@@ -5,19 +5,22 @@
  */
 package Decorator;
 
+import cardgame.AbstractCreature;
 import cardgame.Creature;
+import cardgame.Player;
 
 /**
  *
  * @author Manuel
  */
-public abstract class Decorator implements Creature {   //perché non richiede di implementare tutti i metodi di Creature?
+public abstract class Decorator extends AbstractCreature {   //perché non richiede di implementare tutti i metodi di Creature?
     
     protected final Creature decoratedCreature;
+    
 
-
-    public Decorator(Creature c) {
-        this.decoratedCreature = c;
+    public Decorator(Player p, Creature c){
+        super(p);
+        this.decoratedCreature=c;
     }
 
     @Override
