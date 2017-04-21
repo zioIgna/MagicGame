@@ -191,13 +191,14 @@ public class Player {
     
     //stampa creature non tappate
     public void printUntapped (List<Creature> e ){
-        
+        int i = 0;
         if (e.isEmpty()) {
                 System.out.println("You have no untapped creatures in play");
             } else {
                 System.out.println("These are your untapped creatures in play:");
-                for (Creature c:e)
-                    System.out.println("  "+c);
+                for (Creature c:e){
+                    System.out.println(Integer.toString(i+1) + ") "+c);
+                    i++;}
             }
     }
     
