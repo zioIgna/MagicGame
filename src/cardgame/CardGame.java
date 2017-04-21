@@ -5,6 +5,7 @@
  */
 package cardgame;
 
+import cardgame.cards.BronzeSable;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -27,7 +28,7 @@ public class CardGame {
         //create decks
         ArrayList<Card> deck = new ArrayList<>();
         for (int i=0; i!=5; ++i) deck.add(new Homeopathy());
-        for (int i=0; i!=5; ++i) deck.add(new Reflexologist());
+        for (int i=0; i!=5; ++i) deck.add(new BronzeSable());
         for (int i=0; i!=5; ++i) deck.add(new FriendlyEnvironment());
         
         instance.getPlayer(0).setDeck(deck.iterator());

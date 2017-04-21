@@ -56,9 +56,12 @@ public abstract class AbstractCreature implements Creature {
         
     @Override
         public void inflictDamage(int dmg) { 
-            damageLeft -= dmg; 
-            if (damageLeft<=0)
-                owner.destroy(this);        
+            damageLeft -= dmg;
+            System.out.println(toString() + " takes " + dmg + " damage");
+            if (damageLeft<=0){
+                System.out.println(toString() + " is destroyed");
+                owner.destroy(this);    
+            }    
         }
         
     @Override
