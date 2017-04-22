@@ -20,7 +20,7 @@ public class DefaultCombatPhase implements Phase {
     public void execute() {
         Player currentPlayer = CardGame.instance.getCurrentPlayer();
         Player opponent = CardGame.instance.getCurrentAdversary();
-        Creature attacker = null;
+        Creature attacker;
         List<Creature> att = new LinkedList();
         List<Creature> def = new LinkedList();
         List<List<Creature>> defall = new LinkedList();
@@ -40,33 +40,33 @@ public class DefaultCombatPhase implements Phase {
            System.out.println(currentPlayer.toString() + "'s Combat phase ends.");
         }
         else{
-        
-        List<Creature> attb = cop(att); 
-        System.out.println(currentPlayer.toString() + " has chosen which creatures will attack.");
-        playAvailableEffect(opponent, false);
-        int i = attb.size() -1;
-        int j = 0;
-        Creature l = null;
-        
-        //dichiarazione difensori
-        while(j <= i){
-            l = attb.get(i);
-            System.out.println(currentPlayer.toString() + " will attack with " + l.toString() );
-            def = ChooseDefendersCreature(opponent);
-            defall.add(def);
-            j++;
-        }
-        System.out.println(opponent.toString() + " has chosen which creatures will defend.");
-        playAvailableEffect(currentPlayer, false);
-        
-        //viene gestito il combattimento
-        while(!att.isEmpty()){
-            attacker = att.remove(0);
-            def = defall.remove(0);
-            Conflict(attacker, def, opponent);
-        }
-        
-        System.out.println(currentPlayer.toString() + "'s Combat phase ends.");
+            List<Creature> attb = new LinkedList<>(att);
+
+            System.out.println(currentPlayer.toString() + " has chosen which creatures will attack.");
+            playAvailableEffect(opponent, false);
+            int i = attb.size() -1;
+            int j = 0;
+            Creature l;
+
+            //dichiarazione difensori
+            while(j <= i){
+                l = attb.get(i);
+                System.out.println(currentPlayer.toString() + " will attack with " + l.toString() );
+                def = ChooseDefendersCreature(opponent);
+                defall.add(def);
+                j++;
+            }
+            System.out.println(opponent.toString() + " has chosen which creatures will defend.");
+            playAvailableEffect(currentPlayer, false);
+
+            //viene gestito il combattimento
+            while(!att.isEmpty()){
+                attacker = att.remove(0);
+                def = defall.remove(0);
+                Conflict(attacker, def, opponent);
+            }
+
+            System.out.println(currentPlayer.toString() + "'s Combat phase ends.");
         }
     }
     
@@ -74,56 +74,54 @@ public class DefaultCombatPhase implements Phase {
 
         List<Creature> attackers = new LinkedList();
         List<Creature> untapped = activePlayer.getUntappedCreatures();
-        activePlayer.printUntapped(untapped);
+//        activePlayer.printUntapped(untapped);
         Scanner reader = CardGame.instance.getScanner();
-        int idx = 0;
+        int idx;
         if(untapped.isEmpty()){
-           System.out.println(activePlayer.name() + " cannot attack this turn.");
-           return attackers;
+            activePlayer.printUntapped(untapped);
+            System.out.println(activePlayer.name() + " cannot attack this turn.");
+            return attackers;
         }
-        else{
-        
-            
-        do{ 
-        System.out.println(activePlayer.name() + " select creatures to attack, 0 to pass");
-        idx= reader.nextInt()-1;
-            if (idx >= 0){
-                attackers.add(untapped.remove(idx));
+        else{            
+            do{
+                System.out.println(activePlayer.name() + " select creatures to attack, 0 to pass");
                 activePlayer.printUntapped(untapped);
-            }
-   
+                idx= reader.nextInt()-1;
+                    if (idx >= 0){
+                        attackers.add(untapped.remove(idx));
+//                        activePlayer.printUntapped(untapped);
+                    }
+            } while(idx >= 0 && !untapped.isEmpty());
+            return attackers;
         }
-        while(idx >= 0 && !untapped.isEmpty());
-        return attackers;
-        }
-        
     }
     
 
     private List<Creature> ChooseDefendersCreature(Player oppPlayer) {
-     
+
         List<Creature> defenders = new LinkedList();
         List<Creature> untapped = oppPlayer.getUntappedCreatures();
         oppPlayer.printUntapped(untapped);
         Scanner reader = CardGame.instance.getScanner();
         int idx;
-        
-      
-
-        do{ 
-        System.out.println(oppPlayer.name() + " select creatures to defend, 0 to stop");
-        idx= reader.nextInt()-1;
-        if (idx >= 0){
-            defenders.add(untapped.remove(idx));
-            oppPlayer.printUntapped(untapped);
+        if(untapped.isEmpty()){
+           System.out.println(oppPlayer.name() + " cannot defend this turn.");
+           return defenders;
         }
-   
+        else{
+            do{
+                System.out.println(oppPlayer.name() + " select creatures to defend, 0 to stop");
+                oppPlayer.printUntapped(untapped);
+                idx= reader.nextInt()-1;
+                if (idx >= 0){
+                    defenders.add(untapped.remove(idx));
+//                    oppPlayer.printUntapped(untapped);
+                }
+            }
+            while(idx >= 0 && !untapped.isEmpty());
         }
-        while(idx >= 0 && !untapped.isEmpty());
         return defenders;
-        
-    
-}
+    }
     
     private boolean playAvailableEffect(Player activePlayer, boolean isMain) {
         //collect and display available effects...
