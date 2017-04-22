@@ -78,7 +78,7 @@ public class CardGame {
     
     Player getPlayer(int i) { return Players[i]; }    
     Player getCurrentPlayer() { return turnManagerStack.peek().getCurrentPlayer(); }
-    Player getCurrentAdversary() { return turnManagerStack.peek().getCurrentAdversary(); }
+    public Player getCurrentAdversary() { return turnManagerStack.peek().getCurrentAdversary(); }   //reso public!!!
     Player nextPlayer() { return turnManagerStack.peek().nextPlayer(); }
     
     

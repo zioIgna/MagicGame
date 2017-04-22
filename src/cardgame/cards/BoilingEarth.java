@@ -7,6 +7,7 @@ package cardgame.cards;
 
 import cardgame.AbstractCardEffect;
 import cardgame.Card;
+import cardgame.CardGame;
 import cardgame.Creature;
 import cardgame.Effect;
 import cardgame.Player;
@@ -25,7 +26,10 @@ public class BoilingEarth implements Card {
             for (Creature e : attackers) {
                 e.inflictDamage(1);
             }
-            List<Creature> defenders = CardGame.
+            List<Creature> defenders = CardGame.instance.getCurrentAdversary().getCreatures();
+            for (Creature e : defenders) {
+                e.inflictDamage(1);
+            }
         }
     }
 
