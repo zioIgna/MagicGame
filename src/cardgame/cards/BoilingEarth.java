@@ -11,6 +11,7 @@ import cardgame.CardGame;
 import cardgame.Creature;
 import cardgame.Effect;
 import cardgame.Player;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -22,14 +23,30 @@ public class BoilingEarth implements Card {
         public BoilingEarthEffect(Player p, Card c) { super(p,c); }
         @Override
         public void resolve() {
-            List<Creature> attackers = owner.getCreatures();
-            for (Creature e : attackers) {
-                e.inflictDamage(1);
-            }
+//            List<Creature> attackers = owner.getCreatures();
+            List<Creature> attackers = CardGame.instance.getCurrentPlayer().getCreatures();
+//            for (Creature e : attackers) {
+//                e.inflictDamage(1);
+//            }
+//            Iterator<Creature> iterator = attackers.iterator();
+//            while(iterator.hasNext()){
+//                Creature e = iterator.next();
+//                e.inflictDamage(1);
+//            }
+            for(int i=0; i<attackers.size(); i++)
+                attackers.get(i).inflictDamage(1);
+            
             List<Creature> defenders = CardGame.instance.getCurrentAdversary().getCreatures();
-            for (Creature e : defenders) {
-                e.inflictDamage(1);
-            }
+//            for (Creature e : defenders) {
+//                e.inflictDamage(1);
+//            }
+//            Iterator<Creature> iterator2 = defenders.iterator();
+//            while(iterator2.hasNext()){
+//                Creature e = iterator2.next();
+//                e.inflictDamage(1);
+//            }
+            for(int i=0; i<defenders.size(); i++)
+                defenders.get(i).inflictDamage(1);
         }
     }
 
