@@ -21,8 +21,8 @@ public class DefaultCombatPhase implements Phase {
         Player currentPlayer = CardGame.instance.getCurrentPlayer();
         Player opponent = CardGame.instance.getCurrentAdversary();
         Creature attacker;
-        List<Creature> att = new LinkedList();
-        List<Creature> def = new LinkedList();
+        List<Creature> att;
+        List<Creature> def;
         List<List<Creature>> defall = new LinkedList();
         
         
@@ -40,17 +40,17 @@ public class DefaultCombatPhase implements Phase {
            System.out.println(currentPlayer.toString() + "'s Combat phase ends.");
         }
         else{
-            List<Creature> attb = new LinkedList<>(att);
+//            List<Creature> attb = new LinkedList<>(att);
 
             System.out.println(currentPlayer.toString() + " has chosen which creatures will attack.");
             playAvailableEffect(opponent, false);
-            int i = attb.size() -1;
+            int i = att.size() -1;
             int j = 0;
             Creature l;
 
             //dichiarazione difensori
             while(j <= i){
-                l = attb.get(j);
+                l = att.get(j);
                 System.out.println(currentPlayer.toString() + " will attack with " + l.toString() );
                 def = ChooseDefendersCreature(opponent);
                 defall.add(def);

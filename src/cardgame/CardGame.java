@@ -5,6 +5,7 @@
  */
 package cardgame;
 
+import cardgame.cards.AetherFlash;
 import cardgame.cards.BoilingEarth;
 import cardgame.cards.BronzeSable;
 import java.util.ArrayDeque;
@@ -35,6 +36,7 @@ public class CardGame {
         for (int i=0; i!=3; ++i) deck.add(new BoilingEarth());
         for (int i=0; i!=3; ++i) deck.add(new FriendlyEnvironment());
         for (int i=0; i!=3; ++i) deck.add(new Reflexologist());
+        for (int i=0; i!=3; ++i) deck.add(new AetherFlash());
         
         instance.getPlayer(0).setDeck(deck.iterator());
         instance.getPlayer(1).setDeck(deck.iterator());
