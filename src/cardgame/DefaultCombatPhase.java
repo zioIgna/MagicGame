@@ -50,7 +50,7 @@ public class DefaultCombatPhase implements Phase {
 
             //dichiarazione difensori
             while(j <= i){
-                l = attb.get(i);
+                l = attb.get(j);
                 System.out.println(currentPlayer.toString() + " will attack with " + l.toString() );
                 def = ChooseDefendersCreature(opponent);
                 defall.add(def);

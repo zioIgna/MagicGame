@@ -34,6 +34,7 @@ public class CardGame {
         for (int i=0; i!=3; ++i) deck.add(new NorwoodRanger());
         for (int i=0; i!=3; ++i) deck.add(new BoilingEarth());
         for (int i=0; i!=3; ++i) deck.add(new FriendlyEnvironment());
+        for (int i=0; i!=3; ++i) deck.add(new Reflexologist());
         
         instance.getPlayer(0).setDeck(deck.iterator());
         instance.getPlayer(1).setDeck(deck.iterator());
