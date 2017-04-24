@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,41 +11,42 @@ import cardgame.Card;
 import cardgame.CardGame;
 import cardgame.Creature;
 import cardgame.Effect;
+import cardgame.Enchantment;
 import cardgame.Player;
-import java.util.Iterator;
 import java.util.List;
 
 /**
  *
  * @author ignaz
  */
-public class BoilingEarth implements Card {
-    private class BoilingEarthEffect extends AbstractCardEffect {
-        public BoilingEarthEffect(Player p, Card c) { super(p,c); }
+public class CalmingVerse implements Card {
+    private class CalmingVerseEffect extends AbstractCardEffect {
+        public CalmingVerseEffect(Player p, Card c) { super(p,c); }
         @Override
         public void resolve() {
+            System.out.println("All enemy enchantments destroyed");
+            List<Enchantment> yours = CardGame.instance.getCurrentAdversary().getEnchantments();
+            for(int i=0; i<yours.size(); i++){
+                CardGame.instance.getCurrentAdversary().destroy(yours.get(i));
 
-            List<Creature> attackers = CardGame.instance.getCurrentPlayer().getCreatures();
-            for(int i=0; i<attackers.size(); i++)
-                attackers.get(i).inflictDamage(1);
-            
-            List<Creature> defenders = CardGame.instance.getCurrentAdversary().getCreatures();
-            for(int i=0; i<defenders.size(); i++)
-                defenders.get(i).inflictDamage(1);
+            }
         }
     }
 
     @Override
     public Effect getEffect(Player owner) { 
-        return new BoilingEarthEffect(owner, this); 
+        return new CalmingVerseEffect(owner, this); 
     }
     
     @Override
-    public String name() { return "Boiling Earth"; }
+    public String name() { return "Calming Verse"; }
     @Override
     public String type() { return "Sorcery"; }
     @Override
-    public String ruleText() { return name() + " deals 1 damage to each creature"; }
+
+
+    public String ruleText() { return name() + " destroys all enchantments you don't control"; }
+
     @Override
     public String toString() { return name() + " (" + type() + ") [" + ruleText() +"]";}
     @Override

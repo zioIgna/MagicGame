@@ -59,7 +59,7 @@ public abstract class AbstractCreature implements Creature {
             damageLeft -= dmg;
             System.out.println(toString() + " takes " + dmg + " damage");
             if (damageLeft<=0){
-                System.out.println(toString() + " is destroyed");
+                //System.out.println(toString() + " is destroyed");
                 owner.destroy(this);    
             }    
         }

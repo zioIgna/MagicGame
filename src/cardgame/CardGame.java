@@ -6,8 +6,10 @@
 package cardgame;
 
 import cardgame.cards.AetherFlash;
+import cardgame.cards.AuraBlast;
 import cardgame.cards.BoilingEarth;
 import cardgame.cards.BronzeSable;
+import cardgame.cards.CalmingVerse;
 import cardgame.cards.DayOfJudgement;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ import cardgame.cards.Homeopathy;
 import cardgame.cards.Reflexologist;
 import cardgame.cards.FriendlyEnvironment;
 import cardgame.cards.NorwoodRanger;
+import cardgame.cards.VolcanicHammer;
 
 /**
  *
@@ -31,15 +34,13 @@ public class CardGame {
     public static void main(String[] args) {
         //create decks
         ArrayList<Card> deck = new ArrayList<>();
-//        for (int i=0; i!=3; ++i) deck.add(new Homeopathy());
-        for (int i=0; i!=3; ++i) deck.add(new BronzeSable());
-        for (int i=0; i!=3; ++i) deck.add(new NorwoodRanger());
+
+        for (int i=0; i!=3; ++i) deck.add(new CalmingVerse());
         for (int i=0; i!=3; ++i) deck.add(new BoilingEarth());
-        for (int i=0; i!=3; ++i) deck.add(new DayOfJudgement());
-//        for (int i=0; i!=3; ++i) deck.add(new FriendlyEnvironment());
-//        for (int i=0; i!=3; ++i) deck.add(new Reflexologist());
-//        for (int i=0; i!=3; ++i) deck.add(new AetherFlash());
-        
+        //for (int i=0; i!=3; ++i) deck.add(new FriendlyEnvironment());
+        for (int i=0; i!=3; ++i) deck.add(new Reflexologist());
+        //for (int i=0; i!=3; ++i) deck.add(new AetherFlash());
+
         instance.getPlayer(0).setDeck(deck.iterator());
         instance.getPlayer(1).setDeck(deck.iterator());
         
@@ -103,5 +104,5 @@ public class CardGame {
     
     //IO resources  to be dropped in final version
     private final Scanner reader = new Scanner(System.in);
-    Scanner getScanner() { return reader; }
+    public Scanner getScanner() { return reader; }
 }

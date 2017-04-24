@@ -39,6 +39,7 @@ public class Player {
     
     // need to attach strategy/decorator
     public void inflictDamage(int pts) {
+        System.out.println(this.toString() + " receives " + pts + " damage.");
         life -= pts;
         if (life <=0) lose("received fatal damage");
     }
@@ -164,7 +165,9 @@ public class Player {
     //tutte le creature in campo
     public List<Creature> getCreatures() {return creatures;}
     // destroy a creature in play
-    public void destroy(Creature c) {creatures.remove(c);} 
+    public void destroy(Creature c) {
+        System.out.println(c.toString() + " has been destroyed");
+        creatures.remove(c);} 
     
     
     
@@ -202,7 +205,29 @@ public class Player {
             }
     }
     
-    
-    
+    //stampa creature
+    public void printCards (List<Creature> e , Player p){
+        int i = 0;
+        if (e.isEmpty()) {
+                System.out.println("You have no creatures in play");
+            } else {
+                System.out.println( p.toString() + "'s creatures in play:");
+                for (Creature c:e){
+                    System.out.println(Integer.toString(i+1) + ") "+c);
+                    i++;}
+            }
+    }
+     //stampa creature
+    public void printEnch (List<Enchantment> e , Player p){
+        int i = 0;
+        if (e.isEmpty()) {
+                System.out.println("You have no Enchantments in play");
+            } else {
+                System.out.println( p.toString() + "'s enchantments in play:");
+                for (Enchantment c:e){
+                    System.out.println(Integer.toString(i+1) + ") "+c);
+                    i++;}
+            }
+    }
     
 }
