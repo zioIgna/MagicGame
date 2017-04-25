@@ -32,4 +32,10 @@ public class CardStack implements Iterable<Effect> {
             e.resolve(); 
         }
     }
+    
+    public void removePrev(){   //metodo aggiunto da Ign
+        if(!stack.isEmpty()){
+            stack.pop();
+        }
+    }
 }

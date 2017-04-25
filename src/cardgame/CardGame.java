@@ -5,11 +5,13 @@
  */
 package cardgame;
 
+import cardgame.cards.AetherBarrier;
 import cardgame.cards.AetherFlash;
 import cardgame.cards.AuraBlast;
 import cardgame.cards.BoilingEarth;
 import cardgame.cards.BronzeSable;
 import cardgame.cards.CalmingVerse;
+import cardgame.cards.Cancel;
 import cardgame.cards.DayOfJudgement;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -35,11 +37,19 @@ public class CardGame {
         //create decks
         ArrayList<Card> deck = new ArrayList<>();
 
-        for (int i=0; i!=3; ++i) deck.add(new CalmingVerse());
-        for (int i=0; i!=3; ++i) deck.add(new BoilingEarth());
-        //for (int i=0; i!=3; ++i) deck.add(new FriendlyEnvironment());
+//        for (int i=0; i!=3; ++i) deck.add(new BoilingEarth());
+//        for (int i=0; i!=3; ++i) deck.add(new CalmingVerse());
+//        for (int i=0; i!=3; ++i) deck.add(new DayOfJudgement());
+//        for (int i=0; i!=3; ++i) deck.add(new VolcanicHammer());
+//        for (int i=0; i!=3; ++i) deck.add(new AuraBlast());
+        for (int i=0; i!=3; ++i) deck.add(new Cancel());
+//        for (int i=0; i!=3; ++i) deck.add(new Homeopathy());
+        for (int i=0; i!=3; ++i) deck.add(new BronzeSable());
+        for (int i=0; i!=3; ++i) deck.add(new NorwoodRanger());
         for (int i=0; i!=3; ++i) deck.add(new Reflexologist());
         //for (int i=0; i!=3; ++i) deck.add(new AetherFlash());
+        for (int i=0; i!=3; ++i) deck.add(new AetherBarrier());
+        //for (int i=0; i!=3; ++i) deck.add(new FriendlyEnvironment());
 
         instance.getPlayer(0).setDeck(deck.iterator());
         instance.getPlayer(1).setDeck(deck.iterator());
