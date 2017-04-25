@@ -31,7 +31,7 @@ public class DefaultCombatPhase implements Phase {
         CardGame.instance.getTriggers().trigger(Triggers.COMBAT_FILTER);
         
         //currentPlayer.printUntapped(currentPlayer.getUntappedCreatures());   
-        
+        List<Creature> untapped = opponent.getUntappedCreatures();
         
         //dichiarazione attaccanti
         att = ChooseAttackersCreature(currentPlayer);
@@ -52,7 +52,12 @@ public class DefaultCombatPhase implements Phase {
             while(j <= i){
                 l = att.get(j);
                 System.out.println(currentPlayer.toString() + " will attack with " + l.toString() );
-                def = ChooseDefendersCreature(opponent);
+                def = ChooseDefendersCreature(opponent, untapped);
+                
+                for (Creature c:def) {
+                untapped.remove(c);
+                }
+                
                 defall.add(def);
                 j++;
             }
@@ -97,10 +102,9 @@ public class DefaultCombatPhase implements Phase {
     }
     
 
-    private List<Creature> ChooseDefendersCreature(Player oppPlayer) {
+    private List<Creature> ChooseDefendersCreature(Player oppPlayer, List<Creature> untapped) {
 
         List<Creature> defenders = new LinkedList();
-        List<Creature> untapped = oppPlayer.getUntappedCreatures();
         oppPlayer.printUntapped(untapped);
         Scanner reader = CardGame.instance.getScanner();
         int idx;

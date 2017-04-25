@@ -42,13 +42,13 @@ public class CardGame {
 //        for (int i=0; i!=3; ++i) deck.add(new DayOfJudgement());
 //        for (int i=0; i!=3; ++i) deck.add(new VolcanicHammer());
 //        for (int i=0; i!=3; ++i) deck.add(new AuraBlast());
-        for (int i=0; i!=3; ++i) deck.add(new Cancel());
+        //for (int i=0; i!=3; ++i) deck.add(new Cancel());
 //        for (int i=0; i!=3; ++i) deck.add(new Homeopathy());
         for (int i=0; i!=3; ++i) deck.add(new BronzeSable());
         for (int i=0; i!=3; ++i) deck.add(new NorwoodRanger());
         for (int i=0; i!=3; ++i) deck.add(new Reflexologist());
         //for (int i=0; i!=3; ++i) deck.add(new AetherFlash());
-        for (int i=0; i!=3; ++i) deck.add(new AetherBarrier());
+        //for (int i=0; i!=3; ++i) deck.add(new AetherBarrier());
         //for (int i=0; i!=3; ++i) deck.add(new FriendlyEnvironment());
 
         instance.getPlayer(0).setDeck(deck.iterator());

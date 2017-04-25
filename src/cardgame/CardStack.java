@@ -38,4 +38,5 @@ public class CardStack implements Iterable<Effect> {
             stack.pop();
         }
     }
+   
 }
