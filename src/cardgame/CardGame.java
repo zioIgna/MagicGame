@@ -24,6 +24,7 @@ import cardgame.cards.Homeopathy;
 import cardgame.cards.Reflexologist;
 import cardgame.cards.FriendlyEnvironment;
 import cardgame.cards.NorwoodRanger;
+import cardgame.cards.SavorTheMoment;
 import cardgame.cards.VolcanicHammer;
 
 /**
@@ -43,7 +44,8 @@ public class CardGame {
 //        for (int i=0; i!=3; ++i) deck.add(new CalmingVerse());
 //        for (int i=0; i!=3; ++i) deck.add(new DayOfJudgement());
 //        for (int i=0; i!=3; ++i) deck.add(new FalsePeace());
-        for (int i=0; i!=3; ++i) deck.add(new Fatigue());
+//        for (int i=0; i!=3; ++i) deck.add(new Fatigue());
+        for (int i=0; i!=3; ++i) deck.add(new SavorTheMoment());
 //        for (int i=0; i!=3; ++i) deck.add(new VolcanicHammer());
 //        for (int i=0; i!=3; ++i) deck.add(new AuraBlast());
         //for (int i=0; i!=3; ++i) deck.add(new Cancel());
@@ -103,7 +105,7 @@ public class CardGame {
     Player getPlayer(int i) { return Players[i]; }    
     public Player getCurrentPlayer() { return turnManagerStack.peek().getCurrentPlayer(); }
     public Player getCurrentAdversary() { return turnManagerStack.peek().getCurrentAdversary(); }   //reso public!!!
-    Player nextPlayer() { return turnManagerStack.peek().nextPlayer(); }
+    public Player nextPlayer() { return turnManagerStack.peek().nextPlayer(); }
     
     
     // Stack access

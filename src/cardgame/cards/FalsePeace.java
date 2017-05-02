@@ -24,6 +24,10 @@ public class FalsePeace implements Card{
         public void resolve() {
             System.out.println("Adversary will skip his next combat phase");
             CardGame.instance.getCurrentAdversary().setPhase(Phases.COMBAT, new SkipPhase(Phases.COMBAT));
+//            if(this.owner.equals(CardGame.instance.getCurrentPlayer()))
+//                CardGame.instance.getCurrentAdversary().setPhase(Phases.COMBAT, new SkipPhase(Phases.COMBAT));
+//            else
+//                CardGame.instance.getCurrentPlayer().setPhase(Phases.COMBAT, new SkipPhase(Phases.COMBAT));
         }
     }
 
