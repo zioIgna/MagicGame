@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface Creature extends Permanent {
     
+    void setDecorator(Creature d);  //metodo aggiunto da Ign
     boolean tap();
     boolean untap();
     boolean isTapped();

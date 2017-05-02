@@ -34,9 +34,12 @@ public class Reflexologist implements Card {
         ArrayList<Effect> all_effects= new ArrayList<>();
         ArrayList<Effect> tap_effects= new ArrayList<>();
         
+        private Creature decorator;
+        
         ReflexologistCreature(Player owner) { 
             super(owner);
-            all_effects.add( new Effect() { 
+            decorator=this;
+            all_effects.add( new Effect() {
                                     @Override
                                     public boolean play() { 
                                         CardGame.instance.getStack().add(this);
@@ -67,6 +70,11 @@ public class Reflexologist implements Card {
         public List<Effect> effects() { return all_effects; }
         @Override
         public List<Effect> avaliableEffects() { return (isTapped)?tap_effects:all_effects; }
+
+        @Override
+        public void setDecorator(Creature d) {
+            decorator = d;
+        }
     }
     
     

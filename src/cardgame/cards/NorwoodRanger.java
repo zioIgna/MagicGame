@@ -32,9 +32,11 @@ public class NorwoodRanger implements Card{
         ArrayList<Effect> all_effects= new ArrayList<>();
         ArrayList<Effect> tap_effects= new ArrayList<>();
     
+        private Creature decorator;
         
         NorwoodRangerCreature(Player owner) {
             super(owner);
+            decorator=this;
         }
 
         @Override
@@ -51,6 +53,11 @@ public class NorwoodRanger implements Card{
         public List<Effect> effects() { return all_effects; }
         @Override
         public List<Effect> avaliableEffects() { return (isTapped)?tap_effects:all_effects; }
+
+        @Override
+        public void setDecorator(Creature d) {
+            decorator = d;
+        }
 
     }      
     
