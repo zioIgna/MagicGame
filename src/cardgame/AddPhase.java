@@ -17,9 +17,9 @@ public class AddPhase implements Phase{
         phaseId=id;
         addNum=1;
     }
-    public AddPhase(Phases id, int skip) {
+    public AddPhase(Phases id, int add) {
         phaseId=id;
-        addNum=skip;
+        addNum=add;
     }
     
     

@@ -9,9 +9,11 @@ import cardgame.AbstractCardEffect;
 import cardgame.AddPhase;
 import cardgame.Card;
 import cardgame.CardGame;
+import cardgame.Creature;
 import cardgame.Effect;
 import cardgame.Phases;
 import cardgame.Player;
+import java.util.List;
 
 /**
  *
@@ -22,7 +24,11 @@ public class WorldAtWar implements Card{
         public WorldAtWarEffect(Player p, Card c) { super(p,c); }
         @Override
         public void resolve() {
+            List<Creature> attackers;
             System.out.println("Take and additional combat phase + additional main phase, untap all attacking creatures before the new combat phase");
+            attackers = CardGame.instance.getCurrentPlayer().getTappedCreatures();
+            for(Creature e:attackers)
+                e.untap();
             CardGame.instance.getCurrentAdversary().setPhase(Phases.COMBAT, new AddPhase(Phases.COMBAT));
             CardGame.instance.getCurrentAdversary().setPhase(Phases.MAIN, new AddPhase(Phases.MAIN));
         }

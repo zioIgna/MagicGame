@@ -191,6 +191,15 @@ public class Player {
         return untapped;
 
     }
+
+//    lista delle creature tappate - metodo aggiunto da Ign
+    public List<Creature> getTappedCreatures(){
+        List<Creature> tapped = new LinkedList();
+        for (Creature c: creatures)
+            if(c.isTapped())
+                tapped.add(c);
+        return tapped;
+    }
     
     //stampa creature non tappate
     public void printUntapped (List<Creature> e ){
