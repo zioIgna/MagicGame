@@ -26,6 +26,7 @@ import cardgame.cards.FriendlyEnvironment;
 import cardgame.cards.NorwoodRanger;
 import cardgame.cards.SavorTheMoment;
 import cardgame.cards.VolcanicHammer;
+import cardgame.cards.WorldAtWar;
 
 /**
  *
@@ -45,7 +46,8 @@ public class CardGame {
 //        for (int i=0; i!=3; ++i) deck.add(new DayOfJudgement());
 //        for (int i=0; i!=3; ++i) deck.add(new FalsePeace());
 //        for (int i=0; i!=3; ++i) deck.add(new Fatigue());
-        for (int i=0; i!=3; ++i) deck.add(new SavorTheMoment());
+//        for (int i=0; i!=3; ++i) deck.add(new SavorTheMoment());
+        for (int i=0; i!=3; ++i) deck.add(new WorldAtWar());
 //        for (int i=0; i!=3; ++i) deck.add(new VolcanicHammer());
 //        for (int i=0; i!=3; ++i) deck.add(new AuraBlast());
         //for (int i=0; i!=3; ++i) deck.add(new Cancel());

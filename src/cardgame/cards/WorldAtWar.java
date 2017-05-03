@@ -12,7 +12,6 @@ import cardgame.CardGame;
 import cardgame.Effect;
 import cardgame.Phases;
 import cardgame.Player;
-import cardgame.SkipPhase;
 
 /**
  *
