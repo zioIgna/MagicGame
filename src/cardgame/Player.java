@@ -192,7 +192,7 @@ public class Player {
 
     }
 
-//    lista delle creature tappate - metodo aggiunto da Ign
+//    lista delle creature tappate
     public List<Creature> getTappedCreatures(){
         List<Creature> tapped = new LinkedList();
         for (Creature c: creatures)
@@ -226,7 +226,7 @@ public class Player {
                     i++;}
             }
     }
-     //stampa creature
+     //stampa incantesimi
     public void printEnch (List<Enchantment> e , Player p){
         int i = 0;
         if (e.isEmpty()) {

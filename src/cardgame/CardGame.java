@@ -26,7 +26,6 @@ import cardgame.cards.FriendlyEnvironment;
 import cardgame.cards.NorwoodRanger;
 import cardgame.cards.SavorTheMoment;
 import cardgame.cards.VolcanicHammer;
-import cardgame.cards.WorldAtWar;
 
 /**
  *
@@ -41,23 +40,22 @@ public class CardGame {
         //create decks
         ArrayList<Card> deck = new ArrayList<>();
 
-//        for (int i=0; i!=3; ++i) deck.add(new BoilingEarth());
-//        for (int i=0; i!=3; ++i) deck.add(new CalmingVerse());
-//        for (int i=0; i!=3; ++i) deck.add(new DayOfJudgement());
-//        for (int i=0; i!=3; ++i) deck.add(new FalsePeace());
-//        for (int i=0; i!=3; ++i) deck.add(new Fatigue());
-//        for (int i=0; i!=3; ++i) deck.add(new SavorTheMoment());
-        for (int i=0; i!=3; ++i) deck.add(new WorldAtWar());
-//        for (int i=0; i!=3; ++i) deck.add(new VolcanicHammer());
-//        for (int i=0; i!=3; ++i) deck.add(new AuraBlast());
-        //for (int i=0; i!=3; ++i) deck.add(new Cancel());
-//        for (int i=0; i!=3; ++i) deck.add(new Homeopathy());
-        for (int i=0; i!=3; ++i) deck.add(new BronzeSable());
-        for (int i=0; i!=3; ++i) deck.add(new NorwoodRanger());
-//        for (int i=0; i!=3; ++i) deck.add(new Reflexologist());
-        //for (int i=0; i!=3; ++i) deck.add(new AetherFlash());
-        //for (int i=0; i!=3; ++i) deck.add(new AetherBarrier());
-        //for (int i=0; i!=3; ++i) deck.add(new FriendlyEnvironment());
+        for (int i=0; i!=1; ++i) deck.add(new BoilingEarth());
+        for (int i=0; i!=1; ++i) deck.add(new CalmingVerse());
+        for (int i=0; i!=1; ++i) deck.add(new DayOfJudgement());
+        for (int i=0; i!=1; ++i) deck.add(new FalsePeace());
+        for (int i=0; i!=1; ++i) deck.add(new Fatigue());
+        for (int i=0; i!=1; ++i) deck.add(new SavorTheMoment());
+        for (int i=0; i!=1; ++i) deck.add(new VolcanicHammer());
+        for (int i=0; i!=1; ++i) deck.add(new AuraBlast());
+        for (int i=0; i!=1; ++i) deck.add(new Cancel());
+        for (int i=0; i!=1; ++i) deck.add(new Homeopathy());
+        for (int i=0; i!=1; ++i) deck.add(new BronzeSable());
+        for (int i=0; i!=1; ++i) deck.add(new NorwoodRanger());
+        for (int i=0; i!=1; ++i) deck.add(new Reflexologist());
+        for (int i=0; i!=1; ++i) deck.add(new AetherFlash());
+        for (int i=0; i!=1; ++i) deck.add(new AetherBarrier());
+        for (int i=0; i!=1; ++i) deck.add(new FriendlyEnvironment());
 
         instance.getPlayer(0).setDeck(deck.iterator());
         instance.getPlayer(1).setDeck(deck.iterator());

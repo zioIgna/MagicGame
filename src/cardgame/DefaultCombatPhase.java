@@ -29,19 +29,15 @@ public class DefaultCombatPhase implements Phase {
         System.out.println(currentPlayer.name() + ": combat phase");
         
         CardGame.instance.getTriggers().trigger(Triggers.COMBAT_FILTER);
-        
-        //currentPlayer.printUntapped(currentPlayer.getUntappedCreatures());   
+          
         List<Creature> untapped = opponent.getUntappedCreatures();
         
         //dichiarazione attaccanti
         att = ChooseAttackersCreature(currentPlayer);
         if(att.isEmpty()){
-           //System.out.println(currentPlayer.toString() + " has chosen not to attack.");
            System.out.println(currentPlayer.toString() + "'s Combat phase ends.");
         }
         else{
-//            List<Creature> attb = new LinkedList<>(att);
-
             System.out.println(currentPlayer.toString() + " has chosen which creatures will attack.");
             playAvailableEffect(opponent, false);
             int i = att.size() -1;
@@ -75,11 +71,10 @@ public class DefaultCombatPhase implements Phase {
         }
     }
     
+    //Si richiede di scegliere con quali creature attaccare se vi sono creature disponibili
     private List<Creature> ChooseAttackersCreature(Player activePlayer) {
-
         List<Creature> attackers = new LinkedList();
         List<Creature> untapped = activePlayer.getUntappedCreatures();
-//        activePlayer.printUntapped(untapped);
         Scanner reader = CardGame.instance.getScanner();
         int idx;
         if(untapped.isEmpty()){
@@ -94,16 +89,14 @@ public class DefaultCombatPhase implements Phase {
                 idx= reader.nextInt()-1;
                     if (idx >= 0){
                         attackers.add(untapped.remove(idx));
-//                        activePlayer.printUntapped(untapped);
                     }
             } while(idx >= 0 && !untapped.isEmpty());
             return attackers;
         }
     }
     
-
+    //Si richiede di scegliere con quali creature difendere se vi sono creature disponibili
     private List<Creature> ChooseDefendersCreature(Player oppPlayer, List<Creature> untapped) {
-
         List<Creature> defenders = new LinkedList();
         oppPlayer.printUntapped(untapped);
         Scanner reader = CardGame.instance.getScanner();
@@ -119,7 +112,6 @@ public class DefaultCombatPhase implements Phase {
                 idx= reader.nextInt()-1;
                 if (idx >= 0){
                     defenders.add(untapped.remove(idx));
-//                    oppPlayer.printUntapped(untapped);
                 }
             }
             while(idx >= 0 && !untapped.isEmpty());
@@ -161,6 +153,7 @@ public class DefaultCombatPhase implements Phase {
         return true;
     }
     
+    //Gestione del combattimento e ripartizione dei danni tra creature/giocatori
     private void Conflict(Creature attacker, List<Creature> def, Player opponent){
         //attacco rimanente all'attaccante
         int remAtt = attacker.getPower();
@@ -171,39 +164,28 @@ public class DefaultCombatPhase implements Phase {
         if(def.isEmpty()){
             opponent.inflictDamage(remAtt);
             System.out.println(opponent.name() + " takes " + remAtt + " points of damage, total remaining health: " + opponent.getLife());
-            
         }
         else{
-        Creature currDef = def.remove(0);
-        while(remAtt > 0){
-             
-             if(remAtt <= currDef.getToughness()){
-                 cumAttack += currDef.getPower();
-                 currDef.inflictDamage(remAtt);
-                 remAtt = 0;
-             }
-             else{
-                 remAtt -= currDef.getToughness();
-                 cumAttack += currDef.getPower();
-                 currDef.inflictDamage(currDef.getToughness());
-                 if(def.isEmpty()){
-                     remAtt = 0;
-                 }
-                 else{
-                     currDef = def.remove(0);
-                 }
-                 
-             }    
-        }
-        attacker.inflictDamage(cumAttack); 
+            Creature currDef = def.remove(0);
+            while(remAtt > 0){
+                if(remAtt <= currDef.getToughness()){
+                    cumAttack += currDef.getPower();
+                    currDef.inflictDamage(remAtt);
+                    remAtt = 0;
+                }
+                else{
+                    remAtt -= currDef.getToughness();
+                    cumAttack += currDef.getPower();
+                    currDef.inflictDamage(currDef.getToughness());
+                    if(def.isEmpty()){
+                        remAtt = 0;
+                    }
+                    else{
+                        currDef = def.remove(0);
+                    }
+                }
+            }
+            attacker.inflictDamage(cumAttack); 
         }
     }
-    
-    
-    private List<Creature> cop(List<Creature> a){
-        return a;
-    }
-    
-    
-    
 }

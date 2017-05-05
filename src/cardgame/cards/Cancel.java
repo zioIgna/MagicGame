@@ -8,7 +8,6 @@ package cardgame.cards;
 import cardgame.AbstractCardEffect;
 import cardgame.Card;
 import cardgame.CardGame;
-import cardgame.CardStack;
 import cardgame.Effect;
 import cardgame.Player;
 
